@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route id="checkout" frontName="checkout">
-            <module name="Elogic_MagentoCheckout" />
+        <route id="product" frontName="product">
+            <module name="Internship_ProductQuestion" />
         </route>
     </router>
 </config>
