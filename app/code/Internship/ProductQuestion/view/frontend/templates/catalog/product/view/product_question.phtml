@@ -1,0 +1,40 @@
+<?php
+/**
+ * @var $block
+ */
+?>
+<button type="button" class="btn btn-primary" id="questionButton" data-toggle="modal"
+            data-target="productQuestion"><?php echo __('Ask Question')?></button>
+<!-- Modal -->
+<form method="post" action="<?= $escaper->escapeUrl($block->getUrl('product/email/question'))?>">
+    <div class="modal fade" id="productQuestion" role="dialog" style="display:none;">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><?php echo __('Ask Question')?></h4>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="name"><?php echo __('Name');?>:</label>
+                            <input type="email" class="form-control" id="name" placeholder="<?php echo __('Enter name')?>" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="requirement"><?php echo __('Question') ?> :</label>
+                            <textarea class="form-control" rows="5" id="requirement"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default"><?php echo __('Submit')?></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Internship_ProductQuestion/js/product-question-component" : {}
+        }
+    }
+</script>
