@@ -3,7 +3,6 @@
     <body>
         <referenceBlock name="product.info.addtocart.additional">
             <block name="product.info.product.question"
-                   class=""
                    template="Internship_ProductQuestion::catalog/product/view/product_question.phtml"
                    after="product.info.addtocart" />
         </referenceBlock>

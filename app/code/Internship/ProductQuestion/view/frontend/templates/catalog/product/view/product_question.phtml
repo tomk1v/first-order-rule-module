@@ -1,36 +1,36 @@
-<?php
-/**
- * @var $block
- */
-?>
-<button type="button" class="btn btn-primary" id="questionButton" data-toggle="modal"
-            data-target="productQuestion"><?php echo __('Ask Question')?></button>
+<button type="button" class="btn btn-primary" id="question-button" data-toggle="modal"
+            data-target="product-question-modal"><?php echo __('Ask Question')?></button>
 <!-- Modal -->
-<form method="post" action="<?= $escaper->escapeUrl($block->getUrl('product/email/question'))?>">
-    <div class="modal fade" id="productQuestion" role="dialog" style="display:none;">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"><?php echo __('Ask Question')?></h4>
-                </div>
-                <div class="modal-body">
-                    <form action="">
-                        <div class="form-group">
-                            <label for="name"><?php echo __('Name');?>:</label>
-                            <input type="email" class="form-control" id="name" placeholder="<?php echo __('Enter name')?>" name="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="requirement"><?php echo __('Question') ?> :</label>
-                            <textarea class="form-control" rows="5" id="requirement"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-default"><?php echo __('Submit')?></button>
-                    </form>
-                </div>
+<div class="modal fade" id="product-question-modal" role="dialog" style="display:none;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><?php echo __('Ask Question')?></h4>
+            </div>
+            <div class="modal-body">
+                <form name="question-form">
+                    <div class="form-group">
+                        <label for="name"><?php echo __('Name');?>:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><?php echo __('Email');?>:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="question"><?php echo __('Question') ?> :</label>
+                        <input type="text" class="form-control" name="question" id="question" placeholder="Ask your question here..." />
+                    </div>
+                    <div>
+                        <input type="submit" id="submit-question" value="Send" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
+</div>
+
 <script type="text/x-magento-init">
     {
         "*": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Inernship\ProductQuestion\Controller\Email;
+namespace Internship\ProductQuestion\Controller\Email;
 
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
@@ -73,7 +73,8 @@ class Question implements \Magento\Framework\App\ActionInterface
         ScopeConfigInterface $scopeConfig,
         \Magento\Framework\App\RequestInterface $request,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Checkout\Model\Session $checkoutSession
+        \Magento\Checkout\Model\Session $checkoutSession,
+        \Magento\Customer\Model\Session $customerSession
     ){
         $this->messageManager = $messageManager;
         $this->escaper = $escaper;
@@ -84,6 +85,7 @@ class Question implements \Magento\Framework\App\ActionInterface
         $this->request = $request;
         $this->storeManager = $storeManager;
         $this->checkoutSession = $checkoutSession;
+        $this->customerSession = $customerSession;
     }
 
     /**
@@ -95,35 +97,41 @@ class Question implements \Magento\Framework\App\ActionInterface
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         $resultRedirect->setUrl($this->storeManager->getStore()->getBaseUrl());
 
-        $request = $this->request->getParam('answer');
-        if(!$this->formKeyValidator->validate($this->request)) {
+        $request = $this->request->getParam('question');
+        if(!$request) {
             $this->messageManager->addErrorMessage('Invalid form key');
             return $resultRedirect;
         }
 
-        $emailTempVariables['myvar'] = '$myvar';
+        $emailTempVariables['product'] = '$product';
         $senderName = $this->scopeConfig->getValue(
-            'general/store_information/name',
+            'trans_email/ident_custom1/name',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
-        $wholaEmail = 'marketing@whola.com.au';
+        $senderEmail = $this->scopeConfig->getValue(
+            'trans_email/ident_custom1/email',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+
+        $receiver = $senderEmail;
         $postObject = new \Magento\Framework\DataObject();
         $postObject->setData($emailTempVariables);
         $sender = [
             'name' => $senderName,
-            'email' => $wholaEmail,
+            'email' => $senderEmail,
         ];
 
         try {
-            $transport = $this->transportBuilder->setTemplateIdentifier('email_win_template')
+            $transport = $this->transportBuilder->setTemplateIdentifier('email_product_question')
                 ->setTemplateOptions(['area' => \Magento\Framework\App\Area::AREA_FRONTEND, 'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID])
                 ->setTemplateVars([
-                    'answer' => $this->request->getParam('answer'),
-                    'orderId' => $this->checkoutSession->getLastRealOrderId()
+                    'name' => $this->request->getParam('name'),
+                    'email' => $this->request->getParam('email'),
+                    'question' => $this->request->getParam('question')
                 ])
                 ->setFromByScope($sender)
-                ->addTo($wholaEmail)
-                ->setReplyTo($wholaEmail)
+                ->addTo($receiver)
+                ->setReplyTo($receiver)
                 ->getTransport();
             $transport->sendMessage();
             $this->messageManager->addSuccessMessage(__('We have received your message'));

@@ -1,0 +1,11 @@
+{{template config_path="design/email/header_template"}}
+
+<h2>You have a new question for your product</h2>
+<p>{{trans "Product question from: %name" name=$name.product}}</p>
+<br/>
+<p>{{trans "The main question is: %question" question=$question.product}}</p>
+<br/>
+<p>{{trans "Send reply to: %email" email=$email.product}}</p>
+<br/>
+
+{{template config_path="design/email/footer_template"}}
