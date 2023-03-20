@@ -2,7 +2,6 @@
 
 namespace Internship\ProductQuestion\Controller\Email;
 
-use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
@@ -11,44 +10,43 @@ use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Escaper;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\Message\ManagerInterface;
-use Magento\Store\Model\StoreManagerInterface;
 
 class Question implements \Magento\Framework\App\ActionInterface
 {
     /**
      * @var TransportBuilder
      */
-    protected $transportBuilder;
+    protected TransportBuilder $transportBuilder;
 
     /**
      * @var Escaper
      */
-    protected $escaper;
+    protected Escaper $escaper;
 
     /**
      * @var ManagerInterface
      */
-    protected $messageManager;
+    protected ManagerInterface $messageManager;
 
     /**
      * @var ResultFactory
      */
-    protected $resultFactory;
+    protected ResultFactory $resultFactory;
 
     /**
      * @var Validator
      */
-    protected $formKeyValidator;
+    protected Validator $formKeyValidator;
 
     /**
      * @var ScopeConfigInterface
      */
-    protected $scopeConfig;
+    protected ScopeConfigInterface $scopeConfig;
 
     /**
      * @var RequestInterface
      */
-    protected $request;
+    protected RequestInterface $request;
 
     /**
      * Email constructor.
@@ -60,8 +58,6 @@ class Question implements \Magento\Framework\App\ActionInterface
      * @param Validator $formKeyValidator
      * @param ScopeConfigInterface $scopeConfig
      * @param RequestInterface $request
-     * @param StoreManagerInterface $storeManager
-     * @param Session $checkoutSession
      */
     public function __construct(
         Context $context,
@@ -71,10 +67,7 @@ class Question implements \Magento\Framework\App\ActionInterface
         ResultFactory $resultFactory,
         Validator $formKeyValidator,
         ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\App\RequestInterface $request,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Checkout\Model\Session $checkoutSession,
-        \Magento\Customer\Model\Session $customerSession
+        RequestInterface $request
     ){
         $this->messageManager = $messageManager;
         $this->escaper = $escaper;
@@ -83,24 +76,16 @@ class Question implements \Magento\Framework\App\ActionInterface
         $this->formKeyValidator = $formKeyValidator;
         $this->scopeConfig = $scopeConfig;
         $this->request = $request;
-        $this->storeManager = $storeManager;
-        $this->checkoutSession = $checkoutSession;
-        $this->customerSession = $customerSession;
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @return ManagerInterface
      */
     public function execute()
     {
-        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $resultRedirect->setUrl($this->storeManager->getStore()->getBaseUrl());
-
         $request = $this->request->getParam('question');
         if(!$request) {
-            $this->messageManager->addErrorMessage('Invalid form key');
-            return $resultRedirect;
+            return $this->messageManager->addErrorMessage('Invalid form key');
         }
 
         $emailTempVariables['product'] = '$product';
@@ -134,11 +119,9 @@ class Question implements \Magento\Framework\App\ActionInterface
                 ->setReplyTo($receiver)
                 ->getTransport();
             $transport->sendMessage();
-            $this->messageManager->addSuccessMessage(__('We have received your message'));
-            return $resultRedirect;
-        } catch (\Exception $e) {
-            $this->messageManager->addErrorMessage(__('Something went wrong'));
-            return $resultRedirect;
+            return $this->messageManager->addSuccessMessage(__('We have received your message'));
+        } catch (\Exception $exception) {
+            return $this->messageManager->addErrorMessage(__('Something went wrong'));
         }
     }
 }

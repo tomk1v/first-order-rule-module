@@ -13,14 +13,23 @@
                     <div class="form-group">
                         <label for="name"><?php echo __('Name');?>:</label>
                         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                        <div class="name-hint" style="display:none;">
+                            <h5>Name should be entered</h5>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="email"><?php echo __('Email');?>:</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                        <div class="email-hint" style="display:none;">
+                            <h5>Email should be entered</h5>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="question"><?php echo __('Question') ?> :</label>
                         <input type="text" class="form-control" name="question" id="question" placeholder="Ask your question here..." />
+                        <div class="question-hint" style="display:none;">
+                            <h5>Question should be entered</h5>
+                        </div>
                     </div>
                     <div>
                         <input type="submit" id="submit-question" value="Send" />
@@ -38,3 +47,9 @@
         }
     }
 </script>
+
+
+<div class="address-hint" style="display:none;"><h3>Can't create a pick-up. Please, select the shipment with the same
+        delivery address</h3></div>
+<div class="method-hint" style="display:none;"><h3>Can't create a pick-up. Please, select the shipment with the same
+        delivery method</h3></div>
