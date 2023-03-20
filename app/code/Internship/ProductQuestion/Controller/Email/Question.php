@@ -1,4 +1,13 @@
 <?php
+/**
+ * Product Question
+ * Controller takes data from ajax request.
+ *
+ * @category  Internship
+ * @package   Internship\ProductQuestion
+ * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2023 Tomkiv
+ */
 
 namespace Internship\ProductQuestion\Controller\Email;
 

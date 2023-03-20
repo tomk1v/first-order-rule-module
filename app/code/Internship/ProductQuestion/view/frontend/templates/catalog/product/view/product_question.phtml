@@ -1,9 +1,20 @@
+<!--
+/**
+ * Product Question
+ * Modal window content
+ *
+ * @category  Internship
+ * @package   Internship\ProductQuestion
+ * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2023 Tomkiv
+ */
+-->
+
 <button type="button" class="btn btn-primary" id="question-button" data-toggle="modal"
             data-target="product-question-modal"><?php echo __('Ask Question')?></button>
-<!-- Modal -->
+
 <div class="modal fade" id="product-question-modal" role="dialog" style="display:none;">
     <div class="modal-dialog">
-        <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo __('Ask Question')?></h4>
@@ -47,9 +58,3 @@
         }
     }
 </script>
-
-
-<div class="address-hint" style="display:none;"><h3>Can't create a pick-up. Please, select the shipment with the same
-        delivery address</h3></div>
-<div class="method-hint" style="display:none;"><h3>Can't create a pick-up. Please, select the shipment with the same
-        delivery method</h3></div>
