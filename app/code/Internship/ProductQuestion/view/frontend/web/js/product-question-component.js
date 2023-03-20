@@ -39,7 +39,7 @@ require(
                     dataType : 'json',
                     type: 'POST'
                 });
-                $("#product-question-modal").modal("closeModal");
+                location.reload();
             }
         });
 
