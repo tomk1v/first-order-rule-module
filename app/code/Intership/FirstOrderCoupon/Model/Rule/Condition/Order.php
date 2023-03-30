@@ -10,6 +10,8 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 
 class Order extends \Magento\Rule\Model\Condition\AbstractCondition
 {
+    //TODO: Code refactoring, adding comments
+
     /**
      * @var Yesno
      */
