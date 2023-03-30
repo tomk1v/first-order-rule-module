@@ -1,0 +1,10 @@
+<config>
+    <acl>
+        <resources>
+            <resource id="Intership_FirstOrderCoupon::cart_coupons" title="Custom Section" translate="title" sortOrder="90">
+                <resource id="Intership_FirstOrderCoupon::custom_section_field_one" title="Field One" translate="title" sortOrder="10" />
+                <resource id="Intership_FirstOrderCoupon::custom_section_field_two" title="Field Two" translate="title" sortOrder="20" />
+            </resource>
+        </resources>
+    </acl>
+</config>
