@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!--
 /**
- * First Order Coupon
+ * First Order Rule
  * XML of module settings
  *
  * @category  Internship
- * @package   Internship\FirstOrderCoupon
+ * @package   Internship\FirstOrderRule
  * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
  * @copyright 2023 Tomkiv
  */
 -->
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Intership_FirstOrderCoupon" />
+    <module name="Intership_FirstOrderRule" />
 </config>

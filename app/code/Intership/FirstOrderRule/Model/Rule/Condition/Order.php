@@ -1,15 +1,15 @@
 <?php
 /**
- * First Order Coupon
+ * First Order Rule
  * Model rule add executing.
  *
  * @category  Internship
- * @package   Internship\FirstOrderCoupon
+ * @package   Internship\FirstOrderRule
  * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
  * @copyright 2023 Tomkiv
  */
 
-namespace Intership\FirstOrderCoupon\Model\Rule\Condition;
+namespace Intership\FirstOrderRule\Model\Rule\Condition;
 
 class Order extends \Magento\Rule\Model\Condition\AbstractCondition
 {
@@ -63,7 +63,7 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
     public function loadAttributeOptions()
     {
         $this->setAttributeOption([
-            'customer_first_order' => __('Customer first order')
+            'customer_first_order' => __('Is customer first order')
         ]);
         return $this;
     }

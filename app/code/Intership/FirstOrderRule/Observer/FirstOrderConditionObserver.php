@@ -1,22 +1,22 @@
 <?php
 /**
- * First Order Coupon
+ * First Order Rule
  * Observer for adding 'First Order' rule.
  *
  * @category  Internship
- * @package   Internship\FirstOrderCoupon
+ * @package   Internship\FirstOrderRule
  * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
  * @copyright 2023 Tomkiv
  */
 
-namespace Intership\FirstOrderCoupon\Observer;
+namespace Intership\FirstOrderRule\Observer;
 
 class FirstOrderConditionObserver implements \Magento\Framework\Event\ObserverInterface
 {
     /**
      * Path of xml coupon value.
      */
-    const XML_ENABLED_VALUE = 'first_order_coupon/general/enable';
+    const XML_ENABLED_VALUE = 'first_order_rule/general/enable';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
@@ -66,7 +66,7 @@ class FirstOrderConditionObserver implements \Magento\Framework\Event\ObserverIn
     {
         return [
             'label'=> __('Is customer first order'),
-            'value'=> \Intership\FirstOrderCoupon\Model\Rule\Condition\Order::class
+            'value'=> \Intership\FirstOrderRule\Model\Rule\Condition\Order::class
         ];
     }
 }

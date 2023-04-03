@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!--
 /**
- * First Order Coupon
+ * First Order Rule
  * XML of access control list settings
  *
  * @category  Internship
- * @package   Internship\FirstOrderCoupon
+ * @package   Internship\FirstOrderRule
  * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
  * @copyright 2023 Tomkiv
  */
@@ -15,8 +15,8 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Intership_FirstOrderCoupon::first_order_coupon" title="First Order Coupon" sortOrder="100">
-                    <resource id="Intership_FirstOrderCoupon::general" title="General Configuration" sortOrder="10" />
+                <resource id="Intership_FirstOrderRule::first_order_rule" title="First Order Rule" sortOrder="100">
+                    <resource id="Intership_FirstOrderRule::general" title="General Configuration" sortOrder="10" />
                 </resource>
             </resource>
         </resources>

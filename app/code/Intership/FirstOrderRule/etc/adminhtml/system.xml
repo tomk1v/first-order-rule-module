@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!--
 /**
- * First Order Coupon
+ * First Order Rule
  * XML of admin menu settings
  *
  * @category  Internship
- * @package   Internship\FirstOrderCoupon
+ * @package   Internship\FirstOrderRule
  * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
  * @copyright 2023 Tomkiv
  */
@@ -16,11 +16,11 @@
         <tab id="internship" translate="label" sortOrder="600">
             <label>Internship</label>
         </tab>
-        <section id="first_order_coupon" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="first_order_rule" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
-            <label>First Order Coupon</label>
+            <label>First Order Rule</label>
             <tab>internship</tab>
-            <resource>Intership_FirstOrderCoupon::first_order_coupon</resource>
+            <resource>Intership_FirstOrderRule::first_order_rule</resource>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>General Configuration</label>
                 <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
