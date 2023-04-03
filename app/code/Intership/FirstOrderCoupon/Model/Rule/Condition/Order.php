@@ -1,52 +1,53 @@
 <?php
+/**
+ * First Order Coupon
+ * Model rule add executing.
+ *
+ * @category  Internship
+ * @package   Internship\FirstOrderCoupon
+ * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2023 Tomkiv
+ */
 
 namespace Intership\FirstOrderCoupon\Model\Rule\Condition;
 
-use Magento\Config\Model\Config\Source\Yesno;
-use Magento\Customer\Model\Session;
-use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Rule\Model\Condition\Context;
-use Magento\Sales\Api\OrderRepositoryInterface;
-
 class Order extends \Magento\Rule\Model\Condition\AbstractCondition
 {
-    //TODO: Code refactoring, adding comments
-
     /**
-     * @var Yesno
+     * @var \Magento\Config\Model\Config\Source\Yesno
      */
-    protected Yesno $sourceYesno;
+    protected \Magento\Config\Model\Config\Source\Yesno $sourceYesno;
 
     /**
-     * @var Session
+     * @var \Magento\Customer\Model\Session
      */
-    protected Session $session;
+    protected \Magento\Customer\Model\Session $session;
 
     /**
-     * @var OrderRepositoryInterface
+     * @var \Magento\Sales\Api\OrderRepositoryInterface
      */
-    protected OrderRepositoryInterface $orderRepository;
+    protected \Magento\Sales\Api\OrderRepositoryInterface $orderRepository;
 
     /**
-     * @var SearchCriteriaBuilder
+     * @var \Magento\Framework\Api\SearchCriteriaBuilder
      */
-    protected SearchCriteriaBuilder $searchCriteriaBuilder;
+    protected \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder;
 
     /**
-     * @param Context $context
-     * @param Yesno $sourceYesno
-     * @param Session $session
-     * @param OrderRepositoryInterface $orderRepository
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param \Magento\Rule\Model\Condition\Context $context
+     * @param \Magento\Config\Model\Config\Source\Yesno $sourceYesno
+     * @param \Magento\Customer\Model\Session $session
+     * @param \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
+     * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
      * @param array $data
      */
     public function __construct(
-        Context                  $context,
-        Yesno                    $sourceYesno,
-        Session                  $session,
-        OrderRepositoryInterface $orderRepository,
-        SearchCriteriaBuilder    $searchCriteriaBuilder,
-        array                    $data = []
+        \Magento\Rule\Model\Condition\Context $context,
+        \Magento\Config\Model\Config\Source\Yesno $sourceYesno,
+        \Magento\Customer\Model\Session $session,
+        \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
+        \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
+        array $data = []
     ) {
         parent::__construct($context, $data);
         $this->sourceYesno = $sourceYesno;
@@ -113,7 +114,6 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
         if ($this->session->isLoggedIn()) {
             try {
                 $customerId =  $this->session->getCustomerId();
-
                 $searchCriteria = $this->searchCriteriaBuilder->addFilter('customer_id', $customerId)->create();
                 $order = $this->orderRepository->getList($searchCriteria)->getFirstItem();
                 if (!$order->getId()) {

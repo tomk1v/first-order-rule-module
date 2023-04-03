@@ -1,9 +1,23 @@
-<config>
+<?xml version="1.0"?>
+<!--
+/**
+ * First Order Coupon
+ * XML of access control list settings
+ *
+ * @category  Internship
+ * @package   Internship\FirstOrderCoupon
+ * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2023 Tomkiv
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
     <acl>
         <resources>
-            <resource id="Intership_FirstOrderCoupon::cart_coupons" title="Custom Section" translate="title" sortOrder="90">
-                <resource id="Intership_FirstOrderCoupon::custom_section_field_one" title="Field One" translate="title" sortOrder="10" />
-                <resource id="Intership_FirstOrderCoupon::custom_section_field_two" title="Field Two" translate="title" sortOrder="20" />
+            <resource id="Magento_Backend::admin">
+                <resource id="Intership_FirstOrderCoupon::first_order_coupon" title="First Order Coupon" sortOrder="100">
+                    <resource id="Intership_FirstOrderCoupon::general" title="General Configuration" sortOrder="10" />
+                </resource>
             </resource>
         </resources>
     </acl>

@@ -1,34 +1,40 @@
 <?php
+/**
+ * First Order Coupon
+ * Observer for adding 'First Order' rule.
+ *
+ * @category  Internship
+ * @package   Internship\FirstOrderCoupon
+ * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2023 Tomkiv
+ */
 
 namespace Intership\FirstOrderCoupon\Observer;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
-/**
- * Class CustomerConditionObserver
- */
 class FirstOrderConditionObserver implements \Magento\Framework\Event\ObserverInterface
 {
+    /**
+     * Path of xml coupon value.
+     */
     const XML_ENABLED_VALUE = 'first_order_coupon/general/enable';
 
     /**
-     * @var ScopeConfigInterface
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $scopeConfig;
 
-
     /**
-     * @param ScopeConfigInterface $scopeConfig
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      */
     public function __construct(
-        ScopeConfigInterface $scopeConfig
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     )
     {
         $this->scopeConfig = $scopeConfig;
     }
 
     /**
-     * Execute observer.
+     * If the module is enabled add a new cart rule.
      * @param \Magento\Framework\Event\Observer $observer
      * @return $this
      * @throws \Exception
