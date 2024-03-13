@@ -3,10 +3,10 @@
  * First Order Rule
  * Observer for adding 'First Order' rule.
  *
- * @category  Internship
- * @package   Internship\FirstOrderRule
- * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
- * @copyright 2023 Tomkiv
+ * @category Internship
+ * @package Internship\FirstOrderRule
+ * @author Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2024 Tomkiv
  */
 
 namespace Intership\FirstOrderRule\Observer;
@@ -19,22 +19,17 @@ class FirstOrderConditionObserver implements \Magento\Framework\Event\ObserverIn
     const XML_ENABLED_VALUE = 'first_order_rule/general/enable';
 
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $scopeConfig;
-
-    /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      */
     public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+        protected \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     )
     {
-        $this->scopeConfig = $scopeConfig;
     }
 
     /**
-     * If the module is enabled add a new cart rule.
+     * If the module is enabled, add a new cart rule.
+     *
      * @param \Magento\Framework\Event\Observer $observer
      * @return $this
      * @throws \Exception
@@ -59,7 +54,8 @@ class FirstOrderConditionObserver implements \Magento\Framework\Event\ObserverIn
     }
 
     /**
-     * Get condition for customer first order.
+     * Get condition for customer-first order.
+     *
      * @return array
      */
     private function getCustomerFirstOrderCondition()

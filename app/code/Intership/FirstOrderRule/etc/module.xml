@@ -4,13 +4,13 @@
  * First Order Rule
  * XML of module settings
  *
- * @category  Internship
- * @package   Internship\FirstOrderRule
- * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
- * @copyright 2023 Tomkiv
+ * @category Internship
+ * @package Internship\FirstOrderRule
+ * @author Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2024 Tomkiv
  */
 -->
-
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Intership_FirstOrderRule" />
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Intership_FirstOrderRule"/>
 </config>

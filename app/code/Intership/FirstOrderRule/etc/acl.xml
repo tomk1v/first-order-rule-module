@@ -4,19 +4,19 @@
  * First Order Rule
  * XML of access control list settings
  *
- * @category  Internship
- * @package   Internship\FirstOrderRule
- * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
- * @copyright 2023 Tomkiv
+ * @category Internship
+ * @package Internship\FirstOrderRule
+ * @author Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2024 Tomkiv
  */
 -->
-
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Intership_FirstOrderRule::first_order_rule" title="First Order Rule" sortOrder="100">
-                    <resource id="Intership_FirstOrderRule::general" title="General Configuration" sortOrder="10" />
+                    <resource id="Intership_FirstOrderRule::general" title="General Configuration" sortOrder="10"/>
                 </resource>
             </resource>
         </resources>

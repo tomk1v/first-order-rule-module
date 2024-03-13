@@ -4,15 +4,15 @@
  * First Order Rule
  * XML of events settings
  *
- * @category  Internship
- * @package   Internship\FirstOrderRule
- * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
- * @copyright 2023 Tomkiv
+ * @category Internship
+ * @package Internship\FirstOrderRule
+ * @author Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2024 Tomkiv
  */
 -->
-
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="salesrule_rule_condition_combine">
-        <observer name="first_order_rule" instance="Intership\FirstOrderRule\Observer\FirstOrderConditionObserver" />
+        <observer name="first_order_rule" instance="Intership\FirstOrderRule\Observer\FirstOrderConditionObserver"/>
     </event>
 </config>

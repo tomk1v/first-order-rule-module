@@ -1,38 +1,18 @@
 <?php
 /**
  * First Order Rule
- * Model rule add executing.
+ * Model rule adds executing.
  *
- * @category  Internship
- * @package   Internship\FirstOrderRule
- * @author    Andrii Tomkiv <tomkivandrii18@gmail.com>
- * @copyright 2023 Tomkiv
+ * @category Internship
+ * @package Internship\FirstOrderRule
+ * @author Andrii Tomkiv <tomkivandrii18@gmail.com>
+ * @copyright 2024 Tomkiv
  */
 
 namespace Intership\FirstOrderRule\Model\Rule\Condition;
 
 class Order extends \Magento\Rule\Model\Condition\AbstractCondition
 {
-    /**
-     * @var \Magento\Config\Model\Config\Source\Yesno
-     */
-    protected \Magento\Config\Model\Config\Source\Yesno $sourceYesno;
-
-    /**
-     * @var \Magento\Customer\Model\Session
-     */
-    protected \Magento\Customer\Model\Session $session;
-
-    /**
-     * @var \Magento\Sales\Api\OrderRepositoryInterface
-     */
-    protected \Magento\Sales\Api\OrderRepositoryInterface $orderRepository;
-
-    /**
-     * @var \Magento\Framework\Api\SearchCriteriaBuilder
-     */
-    protected \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder;
-
     /**
      * @param \Magento\Rule\Model\Condition\Context $context
      * @param \Magento\Config\Model\Config\Source\Yesno $sourceYesno
@@ -42,22 +22,19 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
      * @param array $data
      */
     public function __construct(
-        \Magento\Rule\Model\Condition\Context $context,
-        \Magento\Config\Model\Config\Source\Yesno $sourceYesno,
-        \Magento\Customer\Model\Session $session,
-        \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
-        \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
+        protected \Magento\Rule\Model\Condition\Context $context,
+        protected \Magento\Config\Model\Config\Source\Yesno $sourceYesno,
+        protected \Magento\Customer\Model\Session $session,
+        protected \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
+        protected \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->sourceYesno = $sourceYesno;
-        $this->session = $session;
-        $this->orderRepository = $orderRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**
-     * Load attribute options
+     * Load attribute options.
+     *
      * @return $this
      */
     public function loadAttributeOptions()
@@ -69,7 +46,8 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
     }
 
     /**
-     * Get input type
+     * Get an input type.
+     *
      * @return string
      */
     public function getInputType()
@@ -78,7 +56,8 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
     }
 
     /**
-     * Get value element type
+     * Get value element type.
+     *
      * @return string
      */
     public function getValueElementType()
@@ -87,7 +66,8 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
     }
 
     /**
-     * Get value select options
+     * Get value select options.
+     *
      * @return array|mixed
      */
     public function getValueSelectOptions()
@@ -102,7 +82,7 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
     }
 
     /**
-     * Validate Customer First Order Rule Condition
+     * Validate Customer First Order Rule Condition.
      *
      * @param \Magento\Framework\Model\AbstractModel $model
      * @return bool
