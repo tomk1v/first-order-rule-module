@@ -22,11 +22,11 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
      * @param array $data
      */
     public function __construct(
-        protected \Magento\Rule\Model\Condition\Context $context,
-        protected \Magento\Config\Model\Config\Source\Yesno $sourceYesno,
-        protected \Magento\Customer\Model\Session $session,
-        protected \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
-        protected \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
+        protected readonly \Magento\Rule\Model\Condition\Context $context,
+        protected readonly \Magento\Config\Model\Config\Source\Yesno $sourceYesno,
+        protected readonly \Magento\Customer\Model\Session $session,
+        protected readonly \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
+        protected readonly \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -86,7 +86,7 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
      *
      * @param \Magento\Framework\Model\AbstractModel $model
      * @return bool
-     * @throws \Exception
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function validate(\Magento\Framework\Model\AbstractModel $model)
     {
@@ -99,8 +99,11 @@ class Order extends \Magento\Rule\Model\Condition\AbstractCondition
                 if (!$order->getId()) {
                     $firstOrder = 1;
                 }
-            } catch (\Exception $exception) {
-                throw new \Exception($exception->getMessage(), $exception->getCode());
+            } catch (\Magento\Framework\Exception\LocalizedException $exception) {
+                throw new \Magento\Framework\Exception\LocalizedException(
+                    __($exception->getMessage()),
+                    $exception->getCode()
+                );
             }
         }
         $model->setData('customer_first_order', $firstOrder);

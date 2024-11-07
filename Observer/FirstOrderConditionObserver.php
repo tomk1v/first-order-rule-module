@@ -16,15 +16,14 @@ class FirstOrderConditionObserver implements \Magento\Framework\Event\ObserverIn
     /**
      * Path of xml coupon value.
      */
-    const XML_ENABLED_VALUE = 'first_order_rule/general/enable';
+    private const XML_ENABLED_VALUE = 'first_order_rule/general/enable';
 
     /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      */
     public function __construct(
-        protected \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-    )
-    {
+        private readonly \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+    ) {
     }
 
     /**
@@ -46,8 +45,11 @@ class FirstOrderConditionObserver implements \Magento\Framework\Event\ObserverIn
                     $this->getCustomerFirstOrderCondition()
                 ]);
                 $additional->setConditions($conditions);
-            } catch (\Exception $exception) {
-                throw new \Exception($exception->getMessage(), $exception->getCode());
+            } catch (\Magento\Framework\Exception\LocalizedException $exception) {
+                throw new \Magento\Framework\Exception\LocalizedException(
+                    __($exception->getMessage()),
+                    $exception->getCode()
+                );
             }
         }
         return $this;
