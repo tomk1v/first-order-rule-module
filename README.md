@@ -9,7 +9,10 @@ Customer First Order Condition: Adds a condition to cart price rules to check if
 Observer: An observer checks if the module is enabled and adds the custom rule condition to the existing cart price rules.
 
 ### Installation
-1. Clone this repository into the app/code directory of your Magento 2 installation: <br/>
+1. Prepare the Module Directory: <br/>
+`mkdir -p app/code/Intership/FirstOrderRule`
+
+2. Clone the Repository: <br/>
 `git clone https://github.com/tomk1v/first-order-rule-module.git`
 
 2. Run the following commands from the Magento root directory: <br/>
@@ -17,7 +20,7 @@ Observer: An observer checks if the module is enabled and adds the custom rule c
 `bin/magento setup:upgrade` <br/>
 `bin/magento setup:di:compile` <br/>
 
-3. Flush the cache: <br/>
+3. Reindex & Flush the cache: <br/>
 `bin/magento cache:flush`
 
 ### Usage
